@@ -5,13 +5,16 @@ from pipeline import repondre
 
 app = FastAPI()
 
+
 class Question(BaseModel):
     question: str
     session_id: str = "default"
 
+
 @app.get("/")
 def sante():
     return {"statut": "ok", "redis": ping()}
+
 
 @app.post("/ask")
 def poser_question(body: Question):
